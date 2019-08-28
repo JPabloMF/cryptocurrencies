@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
+import { apiRequest } from '../../store/actions';
+import store from '../../store';
 
 /* Components */
 import Header from '../../components/header';
@@ -15,17 +19,47 @@ const StyledContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const Main = (props) => {
+const Main = ({ cryptos }) => {
+  const [crypto, setCrypto] = useState([]);
+
+  useEffect(() => {
+    store.dispatch(apiRequest());
+  }, []);
+
+  useEffect(() => {
+    cryptos && cryptos.Data && setCrypto(cryptos.Data);
+  }, [cryptos]);
+
   return (
     <StyledContainer>
       <Header />
-      <Card />
+      {!crypto.length ? (
+        <p>Loading...</p>
+      ) : (
+        crypto.map(({ CoinInfo, DISPLAY }) => (
+          <Card
+            key={CoinInfo.Name}
+            name={CoinInfo.Name}
+            fullName={CoinInfo.FullName}
+            price={DISPLAY.USD.PRICE}
+            change24hours={DISPLAY.USD.CHANGEPCT24HOUR}
+            changehour={DISPLAY.USD.CHANGEPCTHOUR}
+            imageUrl={DISPLAY.USD.IMAGEURL}
+          />
+        ))
+      )}
     </StyledContainer>
   );
 };
 
-Main.propTypes = {
-  props: PropTypes.object.isRequired
+Main.defaultProps = {
+  cryptos: {}
 };
 
-export default Main;
+Main.propTypes = {
+  cryptos: PropTypes.object
+};
+
+const mapStateToProps = (state) => ({ cryptos: state.crypto.result });
+
+export default connect(mapStateToProps)(Main);

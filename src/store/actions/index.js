@@ -1,7 +1,11 @@
-import { API_REQUEST, API_FAILED } from '../actionTypes';
+import { API_REQUEST, API_FAILED, API_SUCCESS } from '../actionTypes';
 
-export const apiRequest = (data) => ({
-  type: API_REQUEST,
+export const apiRequest = () => ({
+  type: API_REQUEST
+});
+
+export const apiSuccess = (data) => ({
+  type: API_SUCCESS,
   data
 });
 

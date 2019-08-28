@@ -1,14 +1,11 @@
 import axios from 'axios';
 
-const getCryptoCurrencie = () =>
+const getCryptoCurrencies = () =>
   axios
     .get(
-      'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
-      {
-        headers: { 'X-CMC_PRO_API_KEY': '59cab330-f207-4a1d-91bd-dafd68972cdb' }
-      }
+      'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD&api_key=80d0fff0e0c4f7c74f1e0e85c853db57886e1098222c1171e72d17cacdd785e6'
     )
     .then((result) => result)
     .catch((error) => console.log(error));
 
-export default getCryptoCurrencie;
+export default getCryptoCurrencies;

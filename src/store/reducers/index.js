@@ -1,11 +1,15 @@
-import { API_REQUEST, API_FAILED } from '../actionTypes';
+import { API_REQUEST, API_FAILED, API_SUCCESS } from '../actionTypes';
 
 const apiReducer = (state = {}, action) => {
   switch (action.type) {
     case API_REQUEST:
       return {
+        ...state
+      };
+    case API_SUCCESS:
+      return {
         ...state,
-        result: action
+        result: action.data
       };
     case API_FAILED:
       return {

@@ -1,18 +1,18 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { API_REQUEST, API_FAILED } from '../actionTypes';
-import getCryptoCurrencie from '../../../api';
+import { API_REQUEST, API_FAILED, API_SUCCESS } from '../actionTypes';
+import getCryptoCurrencies from '../../api';
 
 function* fetchApi() {
   try {
-    const todos = yield call(getCryptoCurrencie);
-    yield put({ type: API_REQUEST, data: todos.data });
+    const cryptos = yield call(getCryptoCurrencies);
+    yield put({ type: API_SUCCESS, data: cryptos.data });
   } catch (e) {
     yield put({ type: API_FAILED, error: e.message });
   }
 }
 
 function* mySaga() {
-  yield takeLatest(TODO.REQUEST, fetchApi);
+  yield takeLatest(API_REQUEST, fetchApi);
 }
 
 export default mySaga;
