@@ -9,6 +9,7 @@ import store from '../../store';
 /* Components */
 import Header from '../../components/header';
 import Card from '../../components/card';
+import Loader from '../../components/loader';
 
 const StyledContainer = styled.div`
   width: 100%;
@@ -34,7 +35,7 @@ const Main = ({ cryptos }) => {
     <StyledContainer>
       <Header />
       {!crypto.length ? (
-        <p>Loading...</p>
+        <Loader />
       ) : (
         crypto.map(({ CoinInfo, DISPLAY }) => (
           <Card
