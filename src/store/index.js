@@ -1,17 +1,17 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { composeEnhancers } from '../constants';
 
-import apiReducer from './reducers';
-import mySaga from './saga';
+import reducers from './rootReducer';
+import rootSaga from './saga';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-  combineReducers({ crypto: apiReducer }),
+  reducers,
   composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
-sagaMiddleware.run(mySaga);
+sagaMiddleware.run(rootSaga);
 
 export default store;

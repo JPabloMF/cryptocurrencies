@@ -1,6 +1,6 @@
 import { API_REQUEST, API_FAILED, API_SUCCESS } from '../actionTypes';
 
-const apiReducer = (state = {}, action) => {
+export const apiReducer = (state = {}, action) => {
   switch (action.type) {
     case API_REQUEST:
       return {
@@ -20,5 +20,3 @@ const apiReducer = (state = {}, action) => {
       return state;
   }
 };
-
-export default apiReducer;
