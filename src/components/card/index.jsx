@@ -1,14 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
-const StyledCard = styled.div`
-  background-color: #fff;
-  width: 400px;
-  border-radius: 3px;
-  border: 1px solid #bdc3c7;
-  margin-top: 40px;
-`;
+import { StyledCard } from './style';
 
 const StyledCardItem = styled.div`
   display: flex;
@@ -36,7 +29,7 @@ const Card = ({
   price,
   change24hours,
   changehour,
-  imageUrl
+  imageUrl,
 }) => {
   const validatePositiveNegativeChange = (value) => Number(value) < 0;
 
@@ -78,7 +71,7 @@ Card.defaultProps = {
   price: 'initial value',
   change24hours: 'initial value',
   changehour: 'initial value',
-  imageUrl: 'initial value'
+  imageUrl: 'initial value',
 };
 
 Card.propTypes = {
@@ -87,7 +80,7 @@ Card.propTypes = {
   price: PropTypes.string,
   change24hours: PropTypes.string,
   changehour: PropTypes.string,
-  imageUrl: PropTypes.string
+  imageUrl: PropTypes.string,
 };
 
 export default Card;
