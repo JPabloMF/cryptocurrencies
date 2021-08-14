@@ -14,7 +14,7 @@ const animationLoader = keyframes`
 const StyledLoader = styled.div`
   width: 200px;
   height: 200px;
-  border: 10px solid #a55eea;
+  border: 10px solid #fd9644;
   background-color: transparent;
   animation: ${animationLoader} 2s linear infinite;
 `;
@@ -25,7 +25,7 @@ const StyledLoaderContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: #fff;
+  background-color: #1a2028;
   display: flex;
   justify-content: center;
   align-items: center;
