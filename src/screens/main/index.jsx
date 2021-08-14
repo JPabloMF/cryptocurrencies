@@ -10,7 +10,7 @@ import Header from '../../components/header';
 import Card from '../../components/card';
 import Loader from '../../components/loader';
 import InfoCard from "../../components/infoCard";
-import { StyledContainer } from './styles';
+import { StyledContainer, StyledContentContainer } from "./styles";
 
 const Main = ({ cryptos }) => {
   const [crypto, setCrypto] = useState([]);
@@ -26,22 +26,26 @@ const Main = ({ cryptos }) => {
   return (
     <StyledContainer>
       <Header />
-      <InfoCard />
-      {/* {!crypto.length ? (
-        <Loader />
-      ) : (
-        crypto.map(({ CoinInfo, DISPLAY }) => (
-          <Card
-            key={CoinInfo.Name}
-            name={CoinInfo.Name}
-            fullName={CoinInfo.FullName}
-            price={DISPLAY.USD.PRICE}
-            change24hours={DISPLAY.USD.CHANGEPCT24HOUR}
-            changehour={DISPLAY.USD.CHANGEPCTHOUR}
-            imageUrl={DISPLAY.USD.IMAGEURL}
-          />
-        ))
-      )} */}
+      <StyledContentContainer>
+        <InfoCard />
+        <div>
+          {!crypto.length ? (
+            <Loader />
+          ) : (
+            crypto.map(({ CoinInfo, DISPLAY }) => (
+              <Card
+                key={CoinInfo.Name}
+                name={CoinInfo.Name}
+                fullName={CoinInfo.FullName}
+                price={DISPLAY.USD.PRICE}
+                change24hours={DISPLAY.USD.CHANGEPCT24HOUR}
+                changehour={DISPLAY.USD.CHANGEPCTHOUR}
+                imageUrl={DISPLAY.USD.IMAGEURL}
+              />
+            ))
+          )}
+        </div>
+      </StyledContentContainer>
     </StyledContainer>
   );
 };

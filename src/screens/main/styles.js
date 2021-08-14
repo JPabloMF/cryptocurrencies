@@ -15,3 +15,11 @@ export const StyledContainer = styled.div`
     padding-top: 100px;
   }
 `;
+
+export const StyledContentContainer = styled.div`
+  display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
