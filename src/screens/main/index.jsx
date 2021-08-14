@@ -9,6 +9,7 @@ import store from '../../store';
 import Header from '../../components/header';
 import Card from '../../components/card';
 import Loader from '../../components/loader';
+import InfoCard from "../../components/infoCard";
 import { StyledContainer } from './styles';
 
 const Main = ({ cryptos }) => {
@@ -25,7 +26,8 @@ const Main = ({ cryptos }) => {
   return (
     <StyledContainer>
       <Header />
-      {!crypto.length ? (
+      <InfoCard />
+      {/* {!crypto.length ? (
         <Loader />
       ) : (
         crypto.map(({ CoinInfo, DISPLAY }) => (
@@ -39,7 +41,7 @@ const Main = ({ cryptos }) => {
             imageUrl={DISPLAY.USD.IMAGEURL}
           />
         ))
-      )}
+      )} */}
     </StyledContainer>
   );
 };
