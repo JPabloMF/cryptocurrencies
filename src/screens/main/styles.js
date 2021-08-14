@@ -23,3 +23,7 @@ export const StyledContentContainer = styled.div`
     align-items: center;
   }
 `;
+
+export const StyledTableContainer = styled.div`
+  width: 100%;
+`;

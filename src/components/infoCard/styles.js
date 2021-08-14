@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const StyledNewsContainer = styled.div`
+export const StyledInfoContainer = styled.div`
   width: 230px;
-  height: 350px;
+  height: 300px;
   background-color: #1a2028;
   border-radius: 8px;
   border-left: 1px solid #fd9644;
@@ -12,21 +12,28 @@ export const StyledNewsContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 20px;
+  margin-top: 150px;
+  @media (max-width: 768px) {
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
 `;
 
 export const StyledImage = styled.img`
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
 `;
 
 export const StyledTitle = styled.h3`
   color: #fff;
   margin-bottom: 0;
+  margin-top: 0;
 `;
 
 export const StyledDescription = styled.p`
   text-align: center;
   color: #fff;
+  margin: 10px;
 `;
 
 export const StyledLink = styled.a`

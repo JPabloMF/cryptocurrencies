@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-import { apiRequest } from '../../store/actions';
-import store from '../../store';
+import { apiRequest } from "../../store/actions";
+import store from "../../store";
 
 /* Components */
-import Header from '../../components/header';
-import Card from '../../components/card';
-import Loader from '../../components/loader';
+import Header from "../../components/header";
+import Table from "../../components/table";
+import Loader from "../../components/loader";
 import InfoCard from "../../components/infoCard";
-import { StyledContainer, StyledContentContainer } from "./styles";
+import {
+  StyledContainer,
+  StyledContentContainer,
+  StyledTableContainer,
+} from "./styles";
 
 const Main = ({ cryptos }) => {
   const [crypto, setCrypto] = useState([]);
@@ -27,35 +31,23 @@ const Main = ({ cryptos }) => {
     <StyledContainer>
       <Header />
       <StyledContentContainer>
-        <InfoCard />
-        <div>
-          {!crypto.length ? (
-            <Loader />
-          ) : (
-            crypto.map(({ CoinInfo, DISPLAY }) => (
-              <Card
-                key={CoinInfo.Name}
-                name={CoinInfo.Name}
-                fullName={CoinInfo.FullName}
-                price={DISPLAY.USD.PRICE}
-                change24hours={DISPLAY.USD.CHANGEPCT24HOUR}
-                changehour={DISPLAY.USD.CHANGEPCTHOUR}
-                imageUrl={DISPLAY.USD.IMAGEURL}
-              />
-            ))
-          )}
-        </div>
+        <InfoCard
+          price={!crypto.length ? "0.00" : crypto[0].DISPLAY.USD.PRICE}
+        />
+        <StyledTableContainer>
+          {!crypto.length ? <Loader /> : <Table data={crypto} />}
+        </StyledTableContainer>
       </StyledContentContainer>
     </StyledContainer>
   );
 };
 
 Main.defaultProps = {
-  cryptos: {}
+  cryptos: {},
 };
 
 Main.propTypes = {
-  cryptos: PropTypes.object
+  cryptos: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({ cryptos: state.crypto.result });

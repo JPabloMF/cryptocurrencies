@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  StyledNewsContainer,
+  StyledInfoContainer,
   StyledImage,
   StyledTitle,
   StyledDescription,
@@ -8,17 +8,15 @@ import {
 } from "./styles";
 import btcLogo from "../../assets/btc.png";
 
-const InfoCard = () => {
+const InfoCard = ({ price }) => {
   return (
-    <StyledNewsContainer>
+    <StyledInfoContainer>
       <StyledImage src={btcLogo} alt="bitcoin logo" />
       <StyledTitle>BITCOIN</StyledTitle>
-      <StyledDescription>
-        Bitcoin uses peer-to-peer technology to operate with no central
-        authority or banks.
-      </StyledDescription>
+      <StyledDescription>Bitcoin hits a new price!</StyledDescription>
+      <StyledDescription>{price}</StyledDescription>
       <StyledLink href="https://bitcoin.org/en/">Read more</StyledLink>
-    </StyledNewsContainer>
+    </StyledInfoContainer>
   );
 };
 
