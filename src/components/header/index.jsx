@@ -1,22 +1,24 @@
-import React from 'react';
-
-import styled from 'styled-components';
-
-const StyledHeader = styled.header`
-  width: 100%;
-  height: 60px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  background-color: #a55eea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-`;
+import React from "react";
+import {
+  StyledHeader,
+  StyledTitle,
+  StyledInput,
+  StyledList,
+  StyledListItem,
+} from "./styles";
 
 const Header = () => {
-  return <StyledHeader>CRYPTOCURRENCIES</StyledHeader>;
+  return (
+    <StyledHeader>
+      <StyledTitle>CRYPTO</StyledTitle>
+      <StyledInput placeholder='Search...'/>
+      <StyledList>
+        <StyledListItem active>Home</StyledListItem>
+        <StyledListItem>Sell</StyledListItem>
+        <StyledListItem>Buy</StyledListItem>
+      </StyledList>
+    </StyledHeader>
+  );
 };
 
 export default Header;
